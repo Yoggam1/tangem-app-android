@@ -25,6 +25,8 @@ jobs:
     - name: Get all files
       id: filelist
       uses: the-coding-turtle/ga-file-list@v0.1
+      with:
+        directory: "app/src/main/assets/tangem-app-config"
 
   multi_tenant:
     needs: lookup
