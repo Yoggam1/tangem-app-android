@@ -19,12 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        ssh-key: ${{ secrets.MY_SSH_KEY }}
+        submodules: true
     - name: Fetch action
       id: pl
       uses: Rishabh510/Path-lister-action@master
       with:
-        path: "app/src/main/assets"
+        path: "app/src/main/assets/tangem-app-config"
         type: ".json"
 
     - name: Output results
