@@ -25,7 +25,7 @@ jobs:
         submodules: true
     - name: Copy GoogleServices JSON
       run: |
-        cp app/src/main/assets/tangem-app-config/android/google-services.json app/
+        cp "app/src/main/assets/tangem-app-config/android/google-services.json" "app/"
         done
     - name: Fetch action
       id: pl
