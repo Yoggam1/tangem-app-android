@@ -23,16 +23,35 @@ jobs:
       with:
         ssh-key: ${{ secrets.MY_SSH_KEY }}
         submodules: true
+    - name: Copy GoogleServices JSON
+      uses: canastro/copy-file-action@master
+      with:
+        source: "app/src/main/assets/tangem-app-config/android/google-services.json"
+        target: "app/"
+
     - name: Fetch action
       id: pl
       uses: Rishabh510/Path-lister-action@master
       with:
         path: "app/src/main/assets/tangem-app-config"
         type: ".json"
+    
+    - name: Fetch action app
+      id: pl-app
+      uses: Rishabh510/Path-lister-action@master
+      with:
+        path: "app"
+        type: ".json"
 
     - name: Output results
       run: |
         echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
         for i in ${{ steps.pl.outputs.paths }}; do
+        echo $i
+        done
+    - name: Output results app
+      run: |
+        echo "Found ${{ steps.pl-app.outputs.path_count }} file(s) with this extension:"
+        for i in ${{ steps.pl-app.outputs.paths }}; do
         echo $i
         done
