@@ -24,11 +24,9 @@ jobs:
         ssh-key: ${{ secrets.MY_SSH_KEY }}
         submodules: true
     - name: Copy GoogleServices JSON
-      uses: canastro/copy-file-action@master
-      with:
-        source: "app/src/main/assets/tangem-app-config/android/google-services.json"
-        target: "app/"
-
+      run: |
+        cp app/src/main/assets/tangem-app-config/android/google-services.json app/
+        done
     - name: Fetch action
       id: pl
       uses: Rishabh510/Path-lister-action@master
